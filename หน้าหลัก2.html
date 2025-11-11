@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Formula 1 — เว็บไซต์แฟนคลับ</title>
+
+<style>
+:root{
+  --red:#ff1744;
+  --dark:#0d0d0d;
+  --card:#1c1c1c;
+  --muted:#cfcfcf;
+  --accent:#ff5252;
+  --highlight:#ff1744;
+  --glass: rgba(255,255,255,0.05);
+  --max-width:1200px;
+}
+
+body{
+  margin:0;
+  font-family: 'Poppins', Inter, sans-serif;
+  background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
+  color:#fff;
+  line-height:1.6;
+}
+
+header{
+  backdrop-filter: blur(8px);
+  background: linear-gradient(90deg, rgba(255,23,68,0.14), rgba(0,0,0,0.6));
+  border-bottom:1px solid rgba(255,23,68,0.2);
+  padding:18px 24px;
+  position:sticky;
+  top:0;
+  z-index:40;
+}
+
+.wrap{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:48px;height:48px;border-radius:10px;
+  background:linear-gradient(135deg,var(--red),#880e4f);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:20px;
+  box-shadow:0 6px 20px rgba(255,23,68,0.3);
+}
+
+nav a{
+  color:var(--muted);
+  margin-left:18px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+nav a:hover{color:var(--highlight);}
+
+/* Hero */
+.hero{
+  max-width:var(--max-width);
+  margin:36px auto 28px;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:28px;
+  align-items:center;
+}
+
+.hero-card{
+  padding:32px;
+  background: linear-gradient(180deg, rgba(255,23,68,0.02), rgba(0,0,0,0.05));
+  border-radius:20px;
+  border:1px solid rgba(255,23,68,0.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+
+.headline{
+  font-size:42px; 
+  margin:0 0 12px;
+  color:var(--highlight);
+  letter-spacing:1px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+.lead{color:var(--muted);margin-bottom:18px;}
+
+.btn{
+  border:0;padding:12px 20px;border-radius:12px;font-weight:700;cursor:pointer;
+  background: var(--highlight); color:#fff; box-shadow:0 8px 30px rgba(255,23,68,0.3);
+  transition:0.3s;
+}
+.btn:hover{
+  background: linear-gradient(90deg, #ff5252, var(--highlight));
+  transform: scale(1.05);
+}
+.btn.ghost{
+  background:transparent;border:1px solid rgba(255,23,68,0.3);color:var(--muted);
+}
+.btn.ghost:hover{
+  color:#fff;border-color:var(--highlight);
+}
+
+.hero-preview{
+  height:320px;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  background:
+    radial-gradient(1200px 500px at 10% 20%, rgba(255,23,68,0.08), transparent 10%),
+    linear-gradient(135deg,#0d0d0d, #1b0a0f);
+  display:flex;align-items:center;justify-content:center;padding:18px;
+}
+.hero-preview h2{
+  font-size:48px;color:#fff;margin:0;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  text-shadow:0 8px 30px rgba(0,0,0,0.6);
+}
+
+/* Cards นักแข่ง */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.card{
+  background: var(--card);
+  padding:16px;
+  border-radius:16px;
+  border:1px solid rgba(255,23,68,0.08);
+  transition: transform .25s, box-shadow .25s;
+}
+.card:hover{
+  transform: translateY(-8px);
+  box-shadow:0 25px 60px rgba(255,23,68,0.3);
+}
+.card .thumb{
+  height:140px;
+  border-radius:12px;
+  background:linear-gradient(180deg, rgba(255,23,68,0.08), transparent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:18px;
+  overflow:hidden;
+}
+.card h4{margin:12px 0 6px; color:#fff;}
+.card p{margin:0;color:var(--muted);font-size:14px;}
+.card .meta{display:flex;justify-content:space-between;margin-top:12px;align-items:center;}
+.link-small{font-size:13px;color:var(--accent);text-decoration:none;font-weight:700;}
+.link-small:hover{color:var(--highlight);}
+
+/* Table ปฏิทิน */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+  background: var(--card);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,0.5);
+}
+th, td{
+  padding:14px 12px;
+  border-bottom:1px solid rgba(255,23,68,0.1);
+}
+th{
+  color:var(--muted);
+  font-weight:700;
+}
+tr:nth-child(even){background:rgba(255,23,68,0.02);}
+tr:hover{background: rgba(255,23,68,0.1);}
+
+/* Modal */
+.modal-backdrop{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.7);
+  display:none;align-items:center;justify-content:center;z-index:60;
+}
+.modal{
+  width:min(960px,95%);
+  background: linear-gradient(180deg,#0d0d0d,#121212);
+  border-radius:16px;
+  padding:24px;
+  border:1px solid rgba(255,23,68,0.08);
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:20px;
+}
+.modal .photo{
+  height:320px;
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(255,23,68,0.06), transparent);
+  display:flex;align-items:center;justify-content:center;font-weight:700;
+}
+.modal h2{margin:0 0 6px;color:var(--highlight);}
+.modal .bio{margin-top:12px;color:var(--muted);}
+.pill{background:var(--glass);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--muted);}
+.circle-btn{
+  background:transparent;border:1px solid rgba(255,23,68,0.3);
+  padding:10px 14px;border-radius:10px;color:var(--muted);cursor:pointer;font-weight:700;
+}
+.circle-btn:hover{border-color:var(--highlight);color:#fff;}
+.close-x{position:absolute;right:18px;top:18px;background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:18px;}
+
+footer{
+  margin-top:48px;
+  padding:24px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .modal{grid-template-columns:1fr}
+  .modal .photo{height:220px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">
+        <img src="โลโก้.jpg" alt="F1 Logo" style="height:42px; width:auto;">
+      </div>
+      <div>
+        <div style="font-weight:800">Formula 1 </div>
+        <div style="font-size:12px;color:var(--muted)">ให้ความรู้เกี่ยวกับ F1</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#home">หน้าหลัก</a>
+      <a href="#drivers">ทีม & นักแข่ง</a>
+      <a href="#circuits">สนาม (Calendar)</a>
+      <a href="#rules">กติกาสำคัญ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="hero" id="home">
+    <div class="hero-card">
+      <h1 class="headline">เปิดโลกความเร็ว — Formula 1</h1>
+      <p class="lead">รวมข้อมูลทีม นักแข่ง สนาม และกติกาหลัก</p>
+      <div class="cta-row">
+        <button class="btn" onclick="scrollToSection('drivers')">ดูนักแข่ง</button>
+        <button class="btn ghost" onclick="scrollToSection('circuits')">ปฏิทินสนาม</button>
+      </div>
+      <div style="margin-top:18px;color:var(--muted);font-size:13px">
+        ข้อมูลตัวอย่างอ้างอิงรายการนักแข่งและปฏิทินจาก Formula1.com และเอกสารกติกา FIA.
+      </div>
+    </div>
+
+    <div class="hero-preview">
+      <h2>FORMULA 1</h2>
+    </div>
+  </div>
+
+  <!-- DRIVERS -->
+  <section id="drivers">
+    <h3 class="section-title">ทีม & นักแข่ง — Grid</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div style="color:var(--muted)">รวมตัวอย่างนักแข่ง 20 คน — คลิกที่การ์ดเพื่อดูรายละเอียด</div>
+      <div><button class="btn ghost" onclick="shuffleDrivers()">สุ่มการ์ด</button></div>
+    </div>
+    <div class="cards" id="driversGrid"></div>
+  </section>
+
+  <!-- CIRCUITS -->
+  <section id="circuits">
+    <h3 class="section-title">ปฏิทินสนาม (Calendar) — 2025</h3>
+    <p style="color:var(--muted)">รายการสนามตัวอย่างจากปฏิทินอย่างเป็นทางการ (ปี 2025)</p>
+    <table>
+      <thead>
+        <tr><th>#</th><th>สนาม</th><th>ประเทศ</th><th>วันที่ (2025)</th></tr>
+      </thead>
+      <tbody id="circuitsTable"></tbody>
+    </table>
+  </section>
+
+  <!-- RULES -->
+  <section id="rules">
+    <h3 class="section-title">กติกาสำคัญที่ควรรู้</h3>
+    <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div class="card">
+        <h4>จำกัด DRS และปีกหลัง</h4>
+        <p class="muted">FIA กำหนดข้อจำกัดการออกแบบ DRS และปีกหลังเพื่อลดการใช้ "mini-DRS".</p>
+      </div>
+      <div class="card">
+        <h4>ทดสอบผู้ขับหน้าใหม่</h4>
+        <p class="muted">อนุญาตให้ใช้รถทดสอบ Young Drivers ภายใต้เงื่อนไข Sporting Regulations.</p>
+      </div>
+      <div class="card">
+        <h4>คะแนน & Fastest Lap</h4>
+        <p class="muted">ระบบคะแนนยังคงรูปแบบเดิมพร้อมเงื่อนไขสำหรับ fastest lap ในบางกรณี.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
+  <div class="modal" role="dialog" aria-modal="true" id="driverModal">
+    <button class="close-x" onclick="closeModal()">✕</button>
+    <div>
+      <div class="photo" id="modalPhoto">IMG</div>
+      <div style="margin-top:10px">
+        <div class="stat-row" id="modalStats"></div>
+      </div>
+    </div>
+    <div>
+      <h2 id="modalName">ชื่อ</h2>
+      <div style="color:var(--muted)" id="modalTeam">ทีม • เบอร์</div>
+      <p class="bio" id="modalBio">ประวัติสั้น ๆ ของนักแข่ง</p>
+      <div class="navs">
+        <button class="circle-btn" onclick="prevDriver()">← ก่อนหน้า</button>
+        <div style="display:flex;gap:8px">
+          <button class="circle-btn" onclick="openProfilePage()">ดูหน้าแบบเต็ม</button>
+          <button class="circle-btn" onclick="nextDriver()">ถัดไป →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2025 Formula 1 — ตัวอย่างเว็บไซต์ (ข้อมูลอ้างอิงจาก Formula1.com และ FIA)
+</footer>
+
+<script>
+const drivers =[
+   {
+    id: 1,
+    name: "Charles Leclerc",
+    team: "Ferrari",
+    number: 16,
+    country: "Monaco",
+    img: "เจ้าชายชาร์ล.gif",
+    bio: "Charles Leclerc นักแข่งชาวโมนาโก ปัจจุบันขับให้ทีม Scuderia Ferrari...",
+    page: "หน้านักแข่ง+ประวัติข้อมูล.html"
+  },
+  {
+    id: 2,
+    name: "Lewis Hamilton",
+    team: "Ferrari",
+    number: 44,
+    country: "United Kingdom",
+    img: "ลูอิส3.gif",
+    bio: "Lewis Hamilton แชมป์โลก 7 สมัย ปัจจุบันย้ายจาก Mercedes มาร่วม Ferrari...",
+    page: "ประวัติลูอิส.html"
+  },
+  {
+    id: 3,
+    name: "Max Verstappen",
+    team: "Red Bull Racing",
+    number: 1,
+    country: "Netherlands",
+    img: "แม็กซ์.gif",
+    bio: "แชมป์โลก 3 สมัยจากเนเธอร์แลนด์ ผู้ควบคุมสนามด้วยสไตล์การขับสุดดุดัน...",
+    page: "ประวัติแม็กซ์.html"
+  },
+  {
+    id: 4,
+    name: "Lando Norris",
+    team: "McLaren",
+    number: 4,
+    country: "United Kingdom",
+    img: "แลนโด้.gif",
+    bio: "นักขับดาวรุ่งแห่งทีม McLaren...",
+    page: "ประวัติแลนโด้.html"
+  },
+  {
+     id: 5,
+    name: "Oscar Piastri",
+    team: "McLaren",
+    number: 81,
+    country: "United Kingdom",
+    img: "ออสก้า.gif",
+    bio: "นักขับดาวรุ่งแห่งทีม McLaren...",
+    page: "ประวัติออสก้า.html"
+  },
+  {
+    id: 4,
+    name: "Yuki Tsunoda",
+    team: "Red Bull Racing",
+    number: 22,
+    country: "Japan",
+    img: "ยูกิ2.gif",
+    bio: "นักขับที่ขับไว กล้าตัดสินใจ และมีความมุ่งมั่นสูง",
+    page: "ประวัติยูกิ.html"
+  },
+  {
+    id: 7,
+    name: "George Russell",
+    team: "Mercedes",
+    number: 63,
+    country: "United Kingdom",
+    img: "ยัยจอร์จ2.gif",
+    bio: "George Russell นักขับอังกฤษแห่ง Mercedes โดดเด่นด้วยความแม่นยำและความมุ่งมั่น",
+    page: "ประวัติจอร์จ.html"
+  },
+  {
+    id: 8,
+    name: "Kimi Antonelli",
+    team: "Mercedes",
+    number: 80,
+    country: "Italy",
+    img: "คิมิ.gif",
+    bio: "Kimi Antonelli ดาวรุ่งชาวอิตาเลียนที่ถูกจับตามองในฐานะอนาคตของ Mercedes",
+    page: "ประวิติคิมิ.html"
+  },
+  {
+    id: 9,
+    name: "Carlos Sainz",
+    team: "Williams",
+    number: 55,
+    country: "Spain",
+    img: "คาร์ลอส.gif",
+    bio: "Carlos Sainz นักขับชาวสเปนที่มีสไตล์การขับเยือกเย็นและแม่นยำ ปัจจุบันอยู่กับทีม Williams",
+    page: "ประวัติคาร์คอส.html"
+  },
+  {
+    id: 10,
+    name: "Alexander Albon",
+    team: "Williams",
+    number: 23,
+    country: "Thailand / United Kingdom",
+    img: "หลานยายน้อย.gif",
+    bio: "Alex Albon นักแข่งลูกครึ่งไทย–อังกฤษ ผู้สร้างแรงบันดาลใจให้แฟนชาวไทยทั่วประเทศ",
+    page: "หลานยายน้อย.html"
+  },
+  {
+    id: 11,
+    name: "Fernando Alonso",
+    team: "Aston Martin",
+    number: 14,
+    country: "Spain",
+    img: "อลอนโซ่1.gif",
+    bio: "Fernando Alonso แชมป์โลกสองสมัยผู้มากประสบการณ์ จากทีม Aston Martin",
+    page: "อลอนโซ.html"
+  },
+  {
+    id: 12,
+    name: "Lance Stroll",
+    team: "Aston Martin",
+    number: 18,
+    country: "Canada",
+    img: "พ่อรวย3.gif",
+    bio: "Lance Stroll นักขับชาวแคนาดาแห่ง Aston Martin ที่เติบโตจากโปรแกรมเยาวชน",
+    page: "พ่อรวย.html"
+  },
+  {
+    id: 13,
+    name: "Esteban Ocon",
+    team: "Haas",
+    number: 31,
+    country: "France",
+    img: "โอคอน2.gif",
+    bio: "Esteban Ocon นักแข่งฝรั่งเศสผู้มีความมุ่งมั่นและนิสัยการขับที่ดุดัน",
+    page: "โอคอน.html"
+  },
+  {
+    id: 14,
+    name: "Oliver Bearman รอเพิ่มประวัติ",
+    team: "Haas",
+    number: 50,
+    country: "United Kingdom",
+    img: "น้องหมี.gif",
+    bio: "Oliver Bearman ดาวรุ่งวัยเยาว์ที่ได้รับโอกาสโชว์ฝีมือใน Formula 1 กับทีม Haas",
+    page: "น้องหมี.html"
+  },
+  {
+    id: 15,
+    name: "Nico Hülkenberg รอเพิ่มประวัติ",
+    team: "Sauber",
+    number: 27,
+    country: "Germany",
+    img: "นิโค2.gif",
+    bio: "Nico Hülkenberg นักขับชาวเยอรมันผู้มากประสบการณ์ในวงการ Formula 1",
+    page: "นิโค.html"
+  },
+  {
+    id: 16,
+    name: "Gabriel Bortoleto",
+    team: "Sauber",
+    number: 85,
+    country: "Brazil",
+    img: "กาเบียล.gif",
+    bio: "Gabriel Bortoleto ดาวรุ่งชาวบราซิลจากทีม Sauber ที่เติบโตจาก Formula 2",
+    page: "กาเบียล.html"
+  },
+  {
+    id: 17,
+    name: "Pierre Gasly",
+    team: "Alpine",
+    number: 10,
+    country: "France",
+    img: "ปีแอร์.gif",
+    bio: "Pierre Gasly นักขับฝรั่งเศสจาก Alpine ผู้เคยคว้าชัยในรายการ Italian GP 2020",
+    page: "ปีแอร์.html"
+  },
+  {
+    id: 18,
+    name: "Franco Colapinto",
+    team: "Alpine",
+    number: 36,
+    country: "Argentina",
+    img: "ติ๋มมานี่มา.gif",
+    bio: "Franco Colapinto นักขับชาวอาร์เจนตินาผู้มากพรสวรรค์จากทีม Alpine",
+    page: "ติ๋ม.html"
+  },
+  {
+    id: 19,
+    name: "Isack Hadjar",
+    team: "Racing Bulls",
+    number: 26,
+    country: "France",
+    img: "ฮัจจา.gif",
+    bio: "Isack Hadjar นักแข่งดาวรุ่งจากฝรั่งเศส ผู้เป็นหนึ่งในอนาคตของทีม Racing Bulls",
+    page: "ฮัจจา.html"
+  },
+  {
+    id: 20,
+    name: "Liam Lawson",
+    team: "Racing Bulls",
+    number: 33,
+    country: "New Zealand",
+    img: "เลียม1.gif",
+    bio: "Liam Lawson นักขับชาวนิวซีแลนด์ ผู้สร้างผลงานน่าประทับใจในการลงแข่งแทนในปี 2023",
+    page: "เลียม.html"
+  }
+]
+// ตารางสนาม
+const circuits = [
+  {no:1,name:"Melbourne",country:"ออสเตรเลีย",date:"14-16 มีนาคม"},
+  {no:2,name:"Shanghai",country:"จีน",date:"21-23 มีนาคม"},
+  {no:3,name:"Suzuka",country:"ประเทศญี่ปุ่น",date:"4-6 เมษายน"},
+  {no:4,name:"Sakhir",country:"บาห์เรน",date:"11-13 เมษายน"},
+  {no:5,name:"Jeddah",country:"ซาอุดีอาระเบีย",date:"18-20 เมษายน"},
+  {no:6,name:"Miami",country:"สหรัฐอเมริกา",date:"2-4 พฤษภาคม"},
+  {no:7,name:"Imola",country:"อิตาลี",date:"16-18 พฤษภาคม"},
+  {no:8,name:"Monaco",country:"โมนาโก",date:"23-25 พฤษภาคม"},
+  {no:9,name:"Barcelona",country:"สเปน",date:"30 พฤษภาคม – 1 มิถุนายน"},
+  {no:10,name:"Montreal",country:"แคนาดา",date:"13-15 มิถุนายน"},
+  {no:11,name:"Spielberg",country:"ออสเตรีย",date:"27-29 มิถุนายน"},
+  {no:12,name:"Silverstone",country:"สหราชอาณาจักร",date:"4-6 กรกฎาคม"},
+  {no:13,name:"Spa",country:"เบลเยียม",date:"25-27 กรกฎาคม"},
+  {no:14,name:"Budapest",country:"ฮังการี",date:"1-3 สิงหาคม"},
+  {no:15,name:"Zandvoort",country:"เนเธอร์แลนด์",date:"29-31 สิงหาคม"},
+  {no:16,name:"Monza",country:"อิตาลี",date:"5-7 กันยายน"},
+  {no:17,name:"Baku",country:"อาเซอร์ไบจาน",date:"19-21 กันยายน"},
+  {no:18,name:"Singapore",country:"สิงคโปร์",date:"3-5 ตุลาคม"},
+  {no:19,name:"Austin",country:"สหรัฐอเมริกา",date:"17-19 ตุลาคม"},
+  {no:20,name:"Mexico City",country:"เม็กซิโก",date:"24-26 ตุลาคม"},
+  {no:21,name:"Sao Paulo",country:"บราซิล",date:"31 ต.ค-2 พ.ย"},
+  {no:22,name:"Abu Dhabi",country:"สหรัฐอาหรับเอมิเรตส์",date:"21-23 พฤศจิกายน"}
+];
+
+// สร้างตารางสนาม
+const circuitsTable = document.getElementById('circuitsTable');
+circuits.forEach(c=>{
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td>${c.no}</td><td>${c.name}</td><td>${c.country}</td><td>${c.date}</td>`;
+  circuitsTable.appendChild(tr);
+});
+
+// สร้างการ์ดนักแข่ง
+const driversGrid = document.getElementById('driversGrid');
+function renderDrivers(){
+  driversGrid.innerHTML="";
+  drivers.forEach(d=>{
+    const card=document.createElement('div');
+    card.className="card";
+    card.innerHTML=`
+      <div class="thumb"><img src="${d.img}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"></div>
+      <h4>${d.name}</h4>
+      <p>${d.team} • #${d.number}</p>
+    `;
+    card.onclick=()=>openModal(d.id);
+    driversGrid.appendChild(card);
+  });
+}
+renderDrivers();
+function shuffleDrivers(){
+  drivers.sort(()=>Math.random()-0.5);
+  renderDrivers();
+}
+
+// Modal
+let currentDriverId=null;
+function openModal(id){
+  currentDriverId=id;
+  const d=drivers.find(x=>x.id===id);
+  document.getElementById('modalPhoto').innerHTML=`<img src="${d.img}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`;
+  document.getElementById('modalName').innerText=d.name;
+  document.getElementById('modalTeam').innerText=`${d.team} • #${d.number}`;
+  document.getElementById('modalBio').innerText=d.bio;
+  document.getElementById('modalBackdrop').style.display='flex';
+}
+function closeModal(e){
+  if(e?.target.id==='modalBackdrop' || !e) document.getElementById('modalBackdrop').style.display='none';
+}
+function prevDriver(){
+  let idx=drivers.findIndex(x=>x.id===currentDriverId);
+  idx=(idx-1+drivers.length)%drivers.length;
+  openModal(drivers[idx].id);
+}
+function nextDriver(){
+  let idx=drivers.findIndex(x=>x.id===currentDriverId);
+  idx=(idx+1)%drivers.length;
+  openModal(drivers[idx].id);
+}
+function openProfilePage(){
+  const d=drivers.find(x=>x.id===currentDriverId);
+  window.open(d.page,"_blank");
+}
+
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+</script>
+</body>
+</html>
