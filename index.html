@@ -64,7 +64,7 @@
       color: #ffeb3b;
     }
 
-    /* ส่วน Hero */
+    /* HERO SECTION */
     .hero {
       height: 100vh;
       background: url('รถบรื้นๆ.gif') center/cover no-repeat;
@@ -75,6 +75,7 @@
       text-align: center;
       position: relative;
       color: white;
+      display: none; /* ซ่อนหน้าแรกไว้ก่อน */
     }
     .hero::after {
       content: '';
@@ -130,9 +131,8 @@
       box-shadow: 0 15px 40px rgba(255,23,68,0.7);
     }
 
-    /* หน้าล็อกอิน */
+    /* LOGIN PAGE */
     .login-page {
-      display: none;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -227,24 +227,15 @@
   <header>
     <h1>Formula 1 Thailand</h1>
     <nav>
-      <a onclick="showPage('home')">หน้าหลัก</a>
       <a onclick="showPage('login')">เข้าสู่ระบบ</a>
+      <a onclick="showPage('home')">หน้าหลัก</a>
       <a href="หน้าหลัก2.html">ทีม & นักแข่ง</a>
       <a href="https://www.formula1.com/">ข่าวสาร</a>
       <a href="ติดต่อ.html">ติดต่อ</a>
     </nav>
   </header>
 
-  <!-- หน้าแรก -->
-  <section class="hero" id="homePage">
-    <div class="hero-content">
-      <h2>Formula 1</h2>
-      <p>เปิดโลกความเร็วเหนือขีดจำกัด รู้จักทีมแข่ง นักขับ และกติกาของการแข่งขันที่เร็วที่สุดในโลก</p>
-      <button class="btn" onclick="showPage('login')">เริ่ม</button>
-    </div>
-  </section>
-
-  <!-- หน้าล็อกอิน -->
+  <!-- หน้าเข้าสู่ระบบ -->
   <section class="login-page" id="loginPage">
     <form class="login-form" onsubmit="return login(event)">
       <h2>Formula 1</h2>
@@ -255,14 +246,23 @@
     </form>
   </section>
 
+  <!-- หน้าหลัก -->
+  <section class="hero" id="homePage">
+    <div class="hero-content">
+      <h2>Formula 1</h2>
+      <p>เปิดโลกความเร็วเหนือขีดจำกัด รู้จักทีมแข่ง นักขับ และกติกาของการแข่งขันที่เร็วที่สุดในโลก</p>
+      <button class="btn" onclick="alert('🚗 พร้อมลุย!')">เริ่ม</button>
+    </div>
+  </section>
+
   <footer>
     © 2025 Formula 1 | เว็บไซต์ให้ความรู้เกี่ยวกับกีฬาฟอร์มูลาวัน
   </footer>
 
   <script>
     function showPage(page) {
-      document.getElementById("homePage").style.display = (page === 'home') ? 'flex' : 'none';
       document.getElementById("loginPage").style.display = (page === 'login') ? 'flex' : 'none';
+      document.getElementById("homePage").style.display = (page === 'home') ? 'flex' : 'none';
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
@@ -280,8 +280,8 @@
       }
     }
 
-    // เปิดหน้าหลักเป็นค่าเริ่มต้น
-    showPage('home');
+    // แสดงหน้า Login เป็นค่าเริ่มต้น
+    showPage('login');
   </script>
 </body>
 </html>
