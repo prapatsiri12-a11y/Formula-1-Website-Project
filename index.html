@@ -1,219 +1,287 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formula 1 Thailand - รวมประวัตินักแข่ง</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formula 1 Thailand</title>
+
   <style>
     @font-face {
-      font-family: 'PaybAck';
-      src: url('PaybAck.ttf');
+      font-family: 'Starbirl';
+      src: url('Starbirl.otf') format('truetype');
+      font-display: swap;
     }
-    :root {
-      --red:#ff1744;
-      --dark:#0d0d0d;
-      --card:#1c1c1c;
-      --muted:#c0c0c0;
-      --white:#ffffff;
-      --blue:#2196f3;
-      --green:#4caf50;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    * {margin:0; padding:0; box-sizing:border-box;}
+
     body {
-      margin:0;
-      font-family: 'PaybAck', sans-serif;
-      background-color: var(--dark);
-      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
+      color: white;
+      overflow-x: hidden;
+      transition: background 0.8s ease;
     }
+
     header {
-      background-color: var(--red);
-      padding: 1rem;
+      background: rgba(0,0,0,0.8);
+      padding: 15px 40px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top:0;
+      z-index: 100;
     }
-    header .logo { font-weight: 800; font-size: 1.5rem; }
-    header .subtitle { font-size: 12px; color: var(--muted); }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      padding: 2rem;
+
+    header h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #ff1744;
+      text-shadow: 0 0 10px #ff1744, 0 0 20px #ff5252, 0 0 40px #ff1744;
+      animation: neonPulse 3s ease-in-out infinite;
     }
-    .card {
-      background-color: var(--card);
-      border-radius: 1rem;
-      padding: 1rem;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+
+    @keyframes neonPulse {
+      0%, 100% {
+        text-shadow: 0 0 10px #ff1744, 0 0 20px #ff5252, 0 0 40px #ff1744, 0 0 80px #ff5252;
+      }
+      50% {
+        text-shadow: 0 0 20px #ff5252, 0 0 40px #ff1744, 0 0 80px #ff5252, 0 0 120px #ff1744;
+      }
     }
-    .card img {
-      width: 100%;
-      border-radius: 1rem;
-    }
-    .card h2 {
-      margin: 0.5rem 0 0.2rem 0;
-    }
-    .card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .card a {
-      color: var(--blue);
+
+    nav a {
+      color: white;
+      margin: 0 15px;
       text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    nav a:hover {
+      color: #ffeb3b;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      height: 100vh;
+      background: url('รถบรื้นๆ.gif') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      color: white;
+      display: none; /* ซ่อนหน้าแรกไว้ก่อน */
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset:0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+    .hero h2 {
+      font-family: 'Starbirl', sans-serif;
+      font-size: 72px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #ff1744, #ffeb3b, #00e5ff, #7c4dff, #ff1744);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 10s linear infinite;
+      text-shadow: 0 0 25px rgba(255,255,255,0.2);
+    }
+    @keyframes glowText {
+      0% {background-position: 0%;}
+      100% {background-position: 400%;}
+    }
+    .hero p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #fff;
+      text-shadow: 0 0 10px #000;
+    }
+
+    .btn {
+      padding: 14px 40px;
+      background: linear-gradient(135deg,#ff1744,#ff5252);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(255,23,68,0.5);
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(255,23,68,0.7);
+    }
+
+    /* LOGIN PAGE */
+    .login-page {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(270deg, #b71c1c, #f44336, #880e4f);
+      background-size: 600% 600%;
+      animation: gradientBG 15s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .login-form {
+      background: rgba(136,14,79,0.9);
+      padding: 50px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 320px;
+      animation: fadeIn 0.8s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .login-form h2 {
+      font-size: 36px;
+      text-align: center;
+      background: linear-gradient(90deg, #ff1744, #ffeb3b, #00e5ff, #7c4dff, #ff1744);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 8s linear infinite;
+      text-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+    .login-form input {
+      padding: 15px;
+      border-radius: 5px;
+      border: 2px solid #ff1744;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      outline: none;
+      transition: 0.3s;
+    }
+    .login-form input::placeholder {
+      color: #fff;
+    }
+    .login-form input:focus {
+      border-color: #ff5252;
+      box-shadow: 0 0 10px rgba(255,82,82,0.5);
+    }
+    button {
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      background: #ff1744;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ff5252;
+    }
+    .error {
+      color: #ffcdd2;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    @media(max-width:768px){
+      .hero h2 { font-size: 48px; }
+      .hero p { font-size: 16px; }
+      .btn { font-size: 16px; padding: 12px 30px; }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="logo">F1</div>
-    <div>
-      <div>Formula 1 Thailand</div>
-      <div class="subtitle">ให้ความรู้เกี่ยวกับF1</div>
-    </div>
+    <h1>Formula 1 Thailand</h1>
+    <nav>
+      <a onclick="showPage('login')">เข้าสู่ระบบ</a>
+      <a onclick="showPage('home')">หน้าหลัก</a>
+      <a href="หน้าหลัก2.html">ทีม & นักแข่ง</a>
+      <a href="https://www.formula1.com/">ข่าวสาร</a>
+      <a href="ติดต่อ.html">ติดต่อ</a>
+    </nav>
   </header>
 
-  <main class="cards">
-    <!-- Driver Cards -->
-    <div class="card">
-      <img src="เจ้าชายชาร์ล.gif" alt="Charles Leclerc">
-      <h2>Charles Leclerc</h2>
-      <p>Ferrari | 16 | Monaco</p>
-      <p>Charles Leclerc นักแข่งชาวโมนาโก ปัจจุบันขับให้ทีม Scuderia Ferrari...</p>
-      <a href="หน้านักแข่ง+ประวัติข้อมูล.html">ดูประวัติ</a>
+  <!-- หน้าเข้าสู่ระบบ -->
+  <section class="login-page" id="loginPage">
+    <form class="login-form" onsubmit="return login(event)">
+      <h2>Formula 1</h2>
+      <input type="text" id="username" placeholder="username" required>
+      <input type="password" id="password" placeholder="password" required>
+      <button type="submit">Login</button>
+      <p class="error" id="errorMsg"></p>
+    </form>
+  </section>
+
+  <!-- หน้าหลัก -->
+  <section class="hero" id="homePage">
+    <div class="hero-content">
+      <h2>Formula 1</h2>
+      <p>เปิดโลกความเร็วเหนือขีดจำกัด รู้จักทีมแข่ง นักขับ และกติกาของการแข่งขันที่เร็วที่สุดในโลก</p>
+      <button class="btn" onclick="alert('🚗 พร้อมลุย!')">เริ่ม</button>
     </div>
-    <div class="card">
-      <img src="ลูอิส3.gif" alt="Lewis Hamilton">
-      <h2>Lewis Hamilton</h2>
-      <p>Ferrari | 44 | United Kingdom</p>
-      <p>Lewis Hamilton แชมป์โลก 7 สมัย ปัจจุบันย้ายจาก Mercedes มาร่วม Ferrari...</p>
-      <a href="ประวัติลูอิส.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="แม็กซ์.gif" alt="Max Verstappen">
-      <h2>Max Verstappen</h2>
-      <p>Red Bull Racing | 1 | Netherlands</p>
-      <p>แชมป์โลก 3 สมัยจากเนเธอร์แลนด์ ผู้ควบคุมสนามด้วยสไตล์การขับสุดดุดัน...</p>
-      <a href="ประวัติแม็กซ์.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="แลนโด้.gif" alt="Lando Norris">
-      <h2>Lando Norris</h2>
-      <p>McLaren | 4 | United Kingdom</p>
-      <p>นักขับดาวรุ่งแห่งทีม McLaren...</p>
-      <a href="ประวัติแลนโด้.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="ออสก้า.gif" alt="Oscar Piastri">
-      <h2>Oscar Piastri</h2>
-      <p>McLaren | 81 | United Kingdom</p>
-      <p>นักขับดาวรุ่งแห่งทีม McLaren...</p>
-      <a href="ประวัติออสก้า.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="ยูกิ2.gif" alt="Yuki Tsunoda">
-      <h2>Yuki Tsunoda</h2>
-      <p>Red Bull Racing | 22 | Japan</p>
-      <p>นักขับที่ขับไว กล้าตัดสินใจ และมีความมุ่งมั่นสูง</p>
-      <a href="ประวัติยูกิ.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="ยัยจอร์จ2.gif" alt="George Russell">
-      <h2>George Russell</h2>
-      <p>Mercedes | 63 | United Kingdom</p>
-      <p>George Russell นักขับอังกฤษแห่ง Mercedes โดดเด่นด้วยความแม่นยำและความมุ่งมั่น</p>
-      <a href="ประวัติจอร์จ.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="คิมิ.gif" alt="Kimi Antonelli">
-      <h2>Kimi Antonelli</h2>
-      <p>Mercedes | 80 | Italy</p>
-      <p>Kimi Antonelli ดาวรุ่งชาวอิตาเลียนที่ถูกจับตามองในฐานะอนาคตของ Mercedes</p>
-      <a href="ประวิติคิมิ.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="คาร์ลอส.gif" alt="Carlos Sainz">
-      <h2>Carlos Sainz</h2>
-      <p>Williams | 55 | Spain</p>
-      <p>Carlos Sainz นักขับชาวสเปนที่มีสไตล์การขับเยือกเย็นและแม่นยำ ปัจจุบันอยู่กับทีม Williams</p>
-      <a href="ประวัติคาร์คอส.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="หลานยายน้อย.gif" alt="Alexander Albon">
-      <h2>Alexander Albon</h2>
-      <p>Williams | 23 | Thailand / United Kingdom</p>
-      <p>Alex Albon นักแข่งลูกครึ่งไทย–อังกฤษ ผู้สร้างแรงบันดาลใจให้แฟนชาวไทยทั่วประเทศ</p>
-      <a href="หลานยายน้อย.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="อลอนโซ่1.gif" alt="Fernando Alonso">
-      <h2>Fernando Alonso</h2>
-      <p>Aston Martin | 14 | Spain</p>
-      <p>Fernando Alonso แชมป์โลกสองสมัยผู้มากประสบการณ์ จากทีม Aston Martin</p>
-      <a href="อลอนโซ.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="พ่อรวย3.gif" alt="Lance Stroll">
-      <h2>Lance Stroll</h2>
-      <p>Aston Martin | 18 | Canada</p>
-      <p>Lance Stroll นักขับชาวแคนาดาแห่ง Aston Martin ที่เติบโตจากโปรแกรมเยาวชน</p>
-      <a href="พ่อรวย.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="โอคอน2.gif" alt="Esteban Ocon">
-      <h2>Esteban Ocon</h2>
-      <p>Haas | 31 | France</p>
-      <p>Esteban Ocon นักแข่งฝรั่งเศสผู้มีความมุ่งมั่นและนิสัยการขับที่ดุดัน</p>
-      <a href="โอคอน.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="น้องหมี.gif" alt="Oliver Bearman">
-      <h2>Oliver Bearman รอเพิ่มประวัติ</h2>
-      <p>Haas | 50 | United Kingdom</p>
-      <p>Oliver Bearman ดาวรุ่งวัยเยาว์ที่ได้รับโอกาสโชว์ฝีมือใน Formula 1 กับทีม Haas</p>
-      <a href="น้องหมี.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="นิโค2.gif" alt="Nico Hülkenberg">
-      <h2>Nico Hülkenberg รอเพิ่มประวัติ</h2>
-      <p>Sauber | 27 | Germany</p>
-      <p>Nico Hülkenberg นักขับชาวเยอรมันผู้มากประสบการณ์ในวงการ Formula 1</p>
-      <a href="นิโค.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="กาเบียล.gif" alt="Gabriel Bortoleto">
-      <h2>Gabriel Bortoleto</h2>
-      <p>Sauber | 85 | Brazil</p>
-      <p>Gabriel Bortoleto ดาวรุ่งชาวบราซิลจากทีม Sauber ที่เติบโตจาก Formula 2</p>
-      <a href="กาเบียล.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="ปีแอร์.gif" alt="Pierre Gasly">
-      <h2>Pierre Gasly</h2>
-      <p>Alpine | 10 | France</p>
-      <p>Pierre Gasly นักขับฝรั่งเศสจาก Alpine ผู้เคยคว้าชัยในรายการ Italian GP 2020</p>
-      <a href="ปีแอร์.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="ติ๋มมานี่มา.gif" alt="Franco Colapinto">
-      <h2>Franco Colapinto</h2>
-      <p>Alpine | 36 | Argentina</p>
-      <p>Franco Colapinto นักขับชาวอาร์เจนตินาผู้มากพรสวรรค์จากทีม Alpine</p>
-      <a href="ติ๋ม.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="ฮัจจา.gif" alt="Isack Hadjar">
-      <h2>Isack Hadjar</h2>
-      <p>Racing Bulls | 26 | France</p>
-      <p>Isack Hadjar นักแข่งดาวรุ่งจากฝรั่งเศส ผู้เป็นหนึ่งในอนาคตของทีม Racing Bulls</p>
-      <a href="ฮัจจา.html">ดูประวัติ</a>
-    </div>
-    <div class="card">
-      <img src="เลียม1.gif" alt="Liam Lawson">
-      <h2>Liam Lawson</h2>
-      <p>Racing Bulls | 33 | New Zealand</p>
-      <p>Liam Lawson นักขับชาวนิวซีแลนด์ ผู้สร้างผลงานน่าประทับใจในการลงแข่งแทนในปี 2023</p>
-      <a href="เลียม.html">ดูประวัติ</a>
-    </div>
-  </main>
+  </section>
+
+  <footer>
+    © 2025 Formula 1 | เว็บไซต์ให้ความรู้เกี่ยวกับกีฬาฟอร์มูลาวัน
+  </footer>
+
+  <script>
+    function showPage(page) {
+      document.getElementById("loginPage").style.display = (page === 'login') ? 'flex' : 'none';
+      document.getElementById("homePage").style.display = (page === 'home') ? 'flex' : 'none';
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function login(event) {
+      event.preventDefault();
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const error = document.getElementById("errorMsg");
+
+      if (user === "admin" && pass === "1234") {
+        alert("✅ เข้าสู่ระบบสำเร็จ!");
+        showPage('home');
+      } else {
+        error.textContent = "❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+      }
+    }
+
+    // แสดงหน้า Login เป็นค่าเริ่มต้น
+    showPage('login');
+  </script>
 </body>
 </html>
