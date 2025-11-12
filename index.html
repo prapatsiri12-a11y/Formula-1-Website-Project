@@ -1,386 +1,175 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Formula 1 Thailand</title>
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Formula 1 — เว็บไซต์แฟนคลับ</title>
 <style>
-@font-face {
-  font-family: 'Starbirl';
-  src: url('Starbirl.otf') format('truetype');
-  font-display: swap;
+:root{
+  --red:#ff1744;
+  --dark:#0d0d0d;
+  --card:#1c1c1c;
+  --muted:#cfcfcf;
+  --accent:#ff5252;
+  --highlight:#ff1744;
+  --glass: rgba(255,255,255,0.05);
+  --max-width:1200px;
 }
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-* {margin:0; padding:0; box-sizing:border-box;}
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
-  color: white;
-  overflow-x: hidden;
-  transition: background 0.8s ease;
-}
-
-/* HEADER */
-header {
-  background: rgba(0,0,0,0.8);
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top:0;
-  z-index: 100;
-}
-
-header h1 {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: #ff1744;
-  text-shadow: 0 0 10px #ff1744, 0 0 20px #ff5252, 0 0 40px #ff1744;
-  animation: neonPulse 3s ease-in-out infinite;
-}
-@keyframes neonPulse {
-  0%, 100% {
-    text-shadow: 0 0 10px #ff1744, 0 0 20px #ff5252, 0 0 40px #ff1744, 0 0 80px #ff5252;
-  }
-  50% {
-    text-shadow: 0 0 20px #ff5252, 0 0 40px #ff1744, 0 0 80px #ff5252, 0 0 120px #ff1744;
-  }
-}
-
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-  cursor: pointer;
-}
-nav a:hover { color: #ffeb3b; }
-
-/* HERO */
-.hero {
-  height: 100vh;
-  background: url('รถบรื้นๆ.gif') center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  color: white;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  inset:0;
-  background: rgba(0,0,0,0.5);
-}
-.hero-content {
-  position: relative;
-  z-index: 10;
-  max-width: 900px;
-  padding: 0 20px;
-}
-.hero h2 {
-  font-family: 'Starbirl', sans-serif;
-  font-size: 72px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  background: linear-gradient(90deg, #ff1744, #ffeb3b, #00e5ff, #7c4dff, #ff1744);
-  background-size: 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glowText 10s linear infinite;
-  text-shadow: 0 0 25px rgba(255,255,255,0.2);
-}
-@keyframes glowText {
-  0% {background-position: 0%;}
-  100% {background-position: 400%;}
-}
-.hero p {
-  font-size: 20px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  color: #fff;
-  text-shadow: 0 0 10px #000;
-}
-
-.btn {
-  padding: 14px 40px;
-  background: linear-gradient(135deg,#ff1744,#ff5252);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 700;
-  box-shadow: 0 10px 30px rgba(255,23,68,0.5);
-  transition: all 0.3s ease;
-}
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 40px rgba(255,23,68,0.7);
-}
-
-/* LOGIN */
-.login-page {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(270deg, #b71c1c, #f44336, #880e4f);
-  background-size: 600% 600%;
-  animation: gradientBG 15s ease infinite;
-}
-@keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-.login-form {
-  background: rgba(136,14,79,0.9);
-  padding: 50px 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 320px;
-  animation: fadeIn 0.8s ease;
-}
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(30px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-.login-form h2 {
-  font-size: 36px;
-  text-align: center;
-  background: linear-gradient(90deg, #ff1744, #ffeb3b, #00e5ff, #7c4dff, #ff1744);
-  background-size: 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glowText 8s linear infinite;
-  text-shadow: 0 0 15px rgba(255,255,255,0.3);
-}
-.login-form input {
-  padding: 15px;
-  border-radius: 5px;
-  border: 2px solid #ff1744;
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-  outline: none;
-  transition: 0.3s;
-}
-.login-form input::placeholder { color:#fff; }
-.login-form input:focus {
-  border-color: #ff5252;
-  box-shadow: 0 0 10px rgba(255,82,82,0.5);
-}
-button {
-  padding: 15px;
-  border: none;
-  border-radius: 5px;
-  background: #ff1744;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-button:hover { background: #ff5252; }
-.error { color: #ffcdd2; text-align:center; font-size:14px; }
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #111;
-  font-size: 14px;
-  color: #ccc;
-}
-
-/* CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
-.card{
-  background:#1c1c1c;
-  padding:16px;
-  border-radius:16px;
-  border:1px solid rgba(255,23,68,0.08);
-  transition: transform .25s, box-shadow .25s;
-  perspective: 1000px;
-}
-.card:hover{
-  transform: rotateY(10deg) translateY(-10px);
-  box-shadow: 0 25px 50px rgba(255,23,68,0.5);
-}
-.card .thumb{
-  height:140px;
-  border-radius:12px;
-  overflow:hidden;
-  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;
-}
+body{margin:0;font-family:'Poppins', Inter, sans-serif;background:linear-gradient(180deg,#0d0d0d,#1a1a1a);color:#fff;line-height:1.6;}
+header{backdrop-filter: blur(8px);background: linear-gradient(90deg, rgba(255,23,68,0.14), rgba(0,0,0,0.6));border-bottom:1px solid rgba(255,23,68,0.2);padding:18px 24px;position:sticky;top:0;z-index:40;}
+.wrap{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--red),#880e4f);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;box-shadow:0 6px 20px rgba(255,23,68,0.3);}
+nav a{color:var(--muted);margin-left:18px;text-decoration:none;font-weight:600;transition:0.3s;}
+nav a:hover{color:var(--highlight);}
+.hero{max-width:var(--max-width);margin:36px auto 28px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;}
+.hero-card{padding:32px;background: linear-gradient(180deg, rgba(255,23,68,0.02), rgba(0,0,0,0.05));border-radius:20px;border:1px solid rgba(255,23,68,0.1);box-shadow: 0 20px 60px rgba(0,0,0,0.8);}
+.headline{font-size:42px;margin:0 0 12px;color:var(--highlight);letter-spacing:1px;text-shadow: 0 4px 10px rgba(0,0,0,0.6);}
+.lead{color:var(--muted);margin-bottom:18px;}
+.btn{border:0;padding:12px 20px;border-radius:12px;font-weight:700;cursor:pointer;background: var(--highlight); color:#fff; box-shadow:0 8px 30px rgba(255,23,68,0.3);transition:0.3s;}
+.btn:hover{background: linear-gradient(90deg, #ff5252, var(--highlight));transform: scale(1.05);}
+.btn.ghost{background:transparent;border:1px solid rgba(255,23,68,0.3);color:var(--muted);}
+.btn.ghost:hover{color:#fff;border-color:var(--highlight);}
+.hero-preview{height:320px;border-radius:18px;overflow:hidden;position:relative;background:radial-gradient(1200px 500px at 10% 20%, rgba(255,23,68,0.08), transparent 10%),linear-gradient(135deg,#0d0d0d, #1b0a0f);display:flex;align-items:center;justify-content:center;padding:18px;}
+.hero-preview h2{font-size:48px;color:#fff;margin:0;text-transform:uppercase;letter-spacing:3px;text-shadow:0 8px 30px rgba(0,0,0,0.6);}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+.card{background: var(--card);padding:16px;border-radius:16px;border:1px solid rgba(255,23,68,0.08);transition: transform .25s, box-shadow .25s;}
+.card:hover{transform: translateY(-8px);box-shadow:0 25px 60px rgba(255,23,68,0.3);}
+.card .thumb{height:140px;border-radius:12px;background:linear-gradient(180deg, rgba(255,23,68,0.08), transparent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;overflow:hidden;}
 .card h4{margin:12px 0 6px; color:#fff;}
-.card p{margin:0;color:#cfcfcf;font-size:14px;}
+.card p{margin:0;color:var(--muted);font-size:14px;}
 .card .meta{display:flex;justify-content:space-between;margin-top:12px;align-items:center;}
-.link-small{font-size:13px;color:#ff5252;text-decoration:none;font-weight:700;}
-.link-small:hover{color:#ff1744;}
-
-/* MODAL */
-.modal-backdrop{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,0.7);
-  display:none;align-items:center;justify-content:center;z-index:60;
-}
-.modal{
-  width:min(960px,95%);
-  background: linear-gradient(180deg,#0d0d0d,#121212);
-  border-radius:16px;
-  padding:24px;
-  border:1px solid rgba(255,23,68,0.08);
-  display:grid;
-  grid-template-columns:320px 1fr;
-  gap:20px;
-}
-.modal .photo{
-  height:320px;
-  border-radius:14px;
-  display:flex;align-items:center;justify-content:center;font-weight:700;
-}
-.modal h2{margin:0 0 6px;color:#ff1744;}
-.modal .bio{margin-top:12px;color:#cfcfcf;}
-.circle-btn{
-  background:transparent;border:1px solid rgba(255,23,68,0.3);
-  padding:10px 14px;border-radius:10px;color:#cfcfcf;cursor:pointer;font-weight:700;
-}
-.circle-btn:hover{border-color:#ff1744;color:#fff;}
-.close-x{position:absolute;right:18px;top:18px;background:transparent;border:0;color:#cfcfcf;cursor:pointer;font-size:18px;}
-@media(max-width:768px){.hero h2{font-size:48px;}.hero p{font-size:16px;}.btn{font-size:16px;padding:12px 30px;}}
+.link-small{font-size:13px;color:var(--accent);text-decoration:none;font-weight:700;}
+.link-small:hover{color:var(--highlight);}
+table{width:100%;border-collapse:collapse;margin-top:12px;background: var(--card);border-radius:12px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,0.5);}
+th, td{padding:14px 12px;border-bottom:1px solid rgba(255,23,68,0.1);}
+th{color:var(--muted);font-weight:700;}
+tr:nth-child(even){background:rgba(255,23,68,0.02);}
+tr:hover{background: rgba(255,23,68,0.1);}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:60;}
+.modal{width:min(960px,95%);background: linear-gradient(180deg,#0d0d0d,#121212);border-radius:16px;padding:24px;border:1px solid rgba(255,23,68,0.08);display:grid;grid-template-columns:320px 1fr;gap:20px;}
+.modal .photo{height:320px;border-radius:14px;background:linear-gradient(180deg, rgba(255,23,68,0.06), transparent);display:flex;align-items:center;justify-content:center;font-weight:700;}
+.modal h2{margin:0 0 6px;color:var(--highlight);}
+.modal .bio{margin-top:12px;color:var(--muted);}
+.pill{background:var(--glass);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--muted);}
+.circle-btn{background:transparent;border:1px solid rgba(255,23,68,0.3);padding:10px 14px;border-radius:10px;color:var(--muted);cursor:pointer;font-weight:700;}
+.circle-btn:hover{border-color:var(--highlight);color:#fff;}
+.close-x{position:absolute;right:18px;top:18px;background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:18px;}
+footer{margin-top:48px;padding:24px;text-align:center;color:var(--muted);font-size:13px;}
+@media (max-width:900px){.hero{grid-template-columns:1fr}.modal{grid-template-columns:1fr}.modal .photo{height:220px}}
 </style>
 </head>
 <body>
+
 <header>
-<h1>Formula 1 Thailand</h1>
-<nav>
-  <a onclick="showPage('login')">เข้าสู่ระบบ</a>
-  <a onclick="showPage('home')">หน้าหลัก</a>
-</nav>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">
+        <img src="img/โลโก้.jpg" alt="F1 Logo" style="height:42px; width:auto;">
+      </div>
+      <div>
+        <div style="font-weight:800">Formula 1 </div>
+        <div style="font-size:12px;color:var(--muted)">ให้ความรู้เกี่ยวกับ F1</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#home">หน้าหลัก</a>
+      <a href="#drivers">ทีม & นักแข่ง</a>
+      <a href="#circuits">สนาม (Calendar)</a>
+      <a href="#rules">กติกาสำคัญ</a>
+    </nav>
+  </div>
 </header>
 
-<!-- LOGIN PAGE -->
-<section class="login-page" id="loginPage">
-<form class="login-form" onsubmit="return login(event)">
-  <h2>Formula 1</h2>
-  <input type="text" id="username" placeholder="username" required>
-  <input type="password" id="password" placeholder="password" required>
-  <button type="submit">Login</button>
-  <p class="error" id="errorMsg"></p>
-</form>
-</section>
+<main>
+  <div class="hero" id="home">
+    <div class="hero-card">
+      <h1 class="headline">เปิดโลกความเร็ว — Formula 1</h1>
+      <p class="lead">รวมข้อมูลทีม นักแข่ง สนาม และกติกาหลัก</p>
+      <div class="cta-row">
+        <button class="btn" onclick="scrollToSection('drivers')">ดูนักแข่ง</button>
+        <button class="btn ghost" onclick="scrollToSection('circuits')">ปฏิทินสนาม</button>
+      </div>
+      <div style="margin-top:18px;color:var(--muted);font-size:13px">
+        ข้อมูลตัวอย่างอ้างอิงรายการนักแข่งและปฏิทินจาก Formula1.com และเอกสารกติกา FIA.
+      </div>
+    </div>
+    <div class="hero-preview">
+      <h2>FORMULA 1</h2>
+    </div>
+  </div>
 
-<!-- HOME PAGE -->
-<section class="hero" id="homePage">
-<div class="hero-content">
-<h2>Formula 1</h2>
-<p>เปิดโลกความเร็วเหนือขีดจำกัด รู้จักทีมแข่ง นักขับ และกติกาของการแข่งขันที่เร็วที่สุดในโลก</p>
-<button class="btn" onclick="scrollToSection('drivers')">เริ่ม</button>
-</div>
-</section>
+  <!-- DRIVERS -->
+  <section id="drivers">
+    <h3 class="section-title">ทีม & นักแข่ง — Grid</h3>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div style="color:var(--muted)">รวมตัวอย่างนักแข่ง 20 คน — คลิกที่การ์ดเพื่อดูรายละเอียด</div>
+      <div><button class="btn ghost" onclick="shuffleDrivers()">สุ่มการ์ด</button></div>
+    </div>
+    <div class="cards" id="driversGrid"></div>
+  </section>
 
-<!-- DRIVERS -->
-<section id="drivers" style="padding:40px 20px;">
-<h3 style="margin-bottom:20px;color:#ff1744;">ทีม & นักแข่ง</h3>
-<div class="cards" id="driversGrid"></div>
-</section>
+  <!-- CIRCUITS -->
+  <section id="circuits">
+    <h3 class="section-title">ปฏิทินสนาม (Calendar) — 2025</h3>
+    <p style="color:var(--muted)">รายการสนามตัวอย่างจากปฏิทินอย่างเป็นทางการ (ปี 2025)</p>
+    <table>
+      <thead><tr><th>#</th><th>สนาม</th><th>ประเทศ</th><th>วันที่ (2025)</th></tr></thead>
+      <tbody id="circuitsTable"></tbody>
+    </table>
+  </section>
 
-<!-- MODAL -->
+  <!-- RULES -->
+  <section id="rules">
+    <h3 class="section-title">กติกาสำคัญที่ควรรู้</h3>
+    <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div class="card"><h4>จำกัด DRS และปีกหลัง</h4><p class="muted">FIA กำหนดข้อจำกัดการออกแบบ DRS และปีกหลังเพื่อลดการใช้ "mini-DRS".</p></div>
+      <div class="card"><h4>ทดสอบผู้ขับหน้าใหม่</h4><p class="muted">อนุญาตให้ใช้รถทดสอบ Young Drivers ภายใต้เงื่อนไข Sporting Regulations.</p></div>
+      <div class="card"><h4>คะแนน & Fastest Lap</h4><p class="muted">ระบบคะแนนยังคงรูปแบบเดิมพร้อมเงื่อนไขสำหรับ fastest lap ในบางกรณี.</p></div>
+    </div>
+  </section>
+</main>
+
+<!-- Modal -->
 <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
-<div class="modal" role="dialog" aria-modal="true" id="driverModal">
-<button class="close-x" onclick="closeModal()">✕</button>
-<div>
-<div class="photo" id="modalPhoto">IMG</div>
-<div style="margin-top:10px" class="stat-row" id="modalStats"></div>
-</div>
-<div>
-<h2 id="modalName">ชื่อ</h2>
-<div style="color:#cfcfcf" id="modalTeam">ทีม • เบอร์</div>
-<p class="bio" id="modalBio">ประวัติสั้น ๆ ของนักแข่ง</p>
-<div class="navs">
-<button class="circle-btn" onclick="prevDriver()">← ก่อนหน้า</button>
-<div style="display:flex;gap:8px">
-<button class="circle-btn" onclick="openProfilePage()">ดูหน้าแบบเต็ม</button>
-<button class="circle-btn" onclick="nextDriver()">ถัดไป →</button>
-</div>
-</div>
-</div>
-</div>
+  <div class="modal" role="dialog" aria-modal="true" id="driverModal">
+    <button class="close-x" onclick="closeModal()">✕</button>
+    <div>
+      <div class="photo" id="modalPhoto">IMG</div>
+      <div style="margin-top:10px">
+        <div class="stat-row" id="modalStats"></div>
+      </div>
+    </div>
+    <div>
+      <h2 id="modalName">ชื่อ</h2>
+      <div style="color:var(--muted)" id="modalTeam">ทีม • เบอร์</div>
+      <p class="bio" id="modalBio">ประวัติสั้น ๆ ของนักแข่ง</p>
+      <div class="navs">
+        <button class="circle-btn" onclick="prevDriver()">← ก่อนหน้า</button>
+        <div style="display:flex;gap:8px">
+          <button class="circle-btn" onclick="openProfilePage()">ดูหน้าแบบเต็ม</button>
+          <button class="circle-btn" onclick="nextDriver()">ถัดไป →</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<footer>© 2025 Formula 1 | เว็บไซต์ให้ความรู้เกี่ยวกับกีฬาฟอร์มูลาวัน</footer>
+<footer>
+  © 2025 Formula 1 — ตัวอย่างเว็บไซต์ (ข้อมูลอ้างอิงจาก Formula1.com และ FIA)
+</footer>
 
 <script>
-function showPage(page){
-  document.getElementById("loginPage").style.display=(page==='login')?'flex':'none';
-  document.getElementById("homePage").style.display=(page==='home')?'flex':'none';
-}
-function login(e){
-  e.preventDefault();
-  const user=document.getElementById("username").value;
-  const pass=document.getElementById("password").value;
-  const error=document.getElementById("errorMsg");
-  if(user==='admin'&&pass==='1234'){ alert('✅ เข้าสู่ระบบสำเร็จ!'); showPage('home'); }
-  else{ error.textContent="❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"; }
-}
-showPage('login');
-
-// DRIVER DATA
+// Array นักแข่งทั้งหมด 20 คน
 const drivers = [
-  { id: 1, name:"Charles Leclerc", team:"Ferrari", number:16, country:"Monaco", img:"เจ้าชายชาร์ล.gif", bio:"Charles Leclerc นักแข่งชาวโมนาโก ปัจจุบันขับให้ทีม Scuderia Ferrari...", page:"หน้านักแข่ง+ประวัติข้อมูล.html" },
-  { id: 2, name:"Lewis Hamilton", team:"Ferrari", number:44, country:"United Kingdom", img:"ลูอิส3.gif", bio:"Lewis Hamilton แชมป์โลก 7 สมัย ปัจจุบันย้ายจาก Mercedes มาร่วม Ferrari...", page:"ประวัติลูอิส.html" },
-  { id: 3, name:"Max Verstappen", team:"Red Bull Racing", number:1, country:"Netherlands", img:"แม็กซ์.gif", bio:"แชมป์โลก 3 สมัยจากเนเธอร์แลนด์ ผู้ควบคุมสนามด้วยสไตล์การขับสุดดุดัน...", page:"ประวัติแม็กซ์.html" },
-  { id: 4, name:"Lando Norris", team:"McLaren", number:4, country:"United Kingdom", img:"แลนโด้.gif", bio:"นักขับดาวรุ่งแห่งทีม McLaren...", page:"ประวัติแลนโด้.html" },
-  { id: 5, name:"Oscar Piastri", team:"McLaren", number:81, country:"United Kingdom", img:"ออสก้า.gif", bio:"นักขับดาวรุ่งแห่งทีม McLaren...", page:"ประวัติออสก้า.html" },
-  { id: 6, name:"Yuki Tsunoda", team:"Red Bull Racing", number:22, country:"Japan", img:"ยูกิ2.gif", bio:"นักขับที่ขับไว กล้าตัดสินใจ และมีความมุ่งมั่นสูง", page:"ประวัติยูกิ.html" },
-  { id: 7, name:"George Russell", team:"Mercedes", number:63, country:"United Kingdom", img:"ยัยจอร์จ2.gif", bio:"George Russell นักขับอังกฤษแห่ง Mercedes โดดเด่นด้วยความแม่นยำและความมุ่งมั่น", page:"ประวัติจอร์จ.html" },
-  { id: 8, name:"Kimi Antonelli", team:"Mercedes", number:80, country:"Italy", img:"คิมิ.gif", bio:"Kimi Antonelli ดาวรุ่งชาวอิตาเลียนที่ถูกจับตามองในฐานะอนาคตของ Mercedes", page:"ประวิติคิมิ.html" },
-  { id: 9, name:"Carlos Sainz", team:"Williams", number:55, country:"Spain", img:"คาร์ลอส.gif", bio:"Carlos Sainz นักขับชาวสเปนที่มีสไตล์การขับเยือกเย็นและแม่นยำ ปัจจุบันอยู่กับทีม Williams", page:"ประวัติคาร์คอส.html" },
-  { id:10, name:"Alexander Albon", team:"Williams", number:23, country:"Thailand / United Kingdom", img:"หลานยายน้อย.gif", bio:"Alex Albon นักแข่งลูกครึ่งไทย–อังกฤษ ผู้สร้างแรงบันดาลใจให้แฟนชาวไทยทั่วประเทศ", page:"หลานยายน้อย.html" },
-  { id:11, name:"Fernando Alonso", team:"Aston Martin", number:14, country:"Spain", img:"อลอนโซ่1.gif", bio:"Fernando Alonso แชมป์โลกสองสมัยผู้มากประสบการณ์ จากทีม Aston Martin", page:"อลอนโซ.html" },
-  { id:12, name:"Lance Stroll", team:"Aston Martin", number:18, country:"Canada", img:"พ่อรวย3.gif", bio:"Lance Stroll นักขับชาวแคนาดาแห่ง Aston Martin ที่เติบโตจากโปรแกรมเยาวชน", page:"พ่อรวย.html" },
-  { id:13, name:"Esteban Ocon", team:"Haas", number:31, country:"France", img:"โอคอน2.gif", bio:"Esteban Ocon นักแข่งฝรั่งเศสผู้มีความมุ่งมั่นและนิสัยการขับที่ดุดัน", page:"โอคอน.html" },
-  { id:14, name:"Oliver Bearman รอเพิ่มประวัติ", team:"Haas", number:50, country:"United Kingdom", img:"น้องหมี.gif", bio:"Oliver Bearman ดาวรุ่งวัยเยาว์ที่ได้รับโอกาสโชว์ฝีมือใน Formula 1 กับทีม Haas", page:"น้องหมี.html" },
-  { id:15, name:"Nico Hülkenberg รอเพิ่มประวัติ", team:"Sauber", number:27, country:"Germany", img:"นิโค2.gif", bio:"Nico Hülkenberg นักขับชาวเยอรมันผู้มากประสบการณ์ในวงการ Formula 1", page:"นิโค.html" },
-  { id:16, name:"Gabriel Bortoleto", team:"Sauber", number:85, country:"Brazil", img:"กาเบียล.gif", bio:"Gabriel Bortoleto ดาวรุ่งชาวบราซิลจากทีม Sauber ที่เติบโตจาก Formula 2", page:"กาเบียล.html" },
-  { id:17, name:"Pierre Gasly", team:"Alpine", number:10, country:"France", img:"ปีแอร์.gif", bio:"Pierre Gasly นักขับฝรั่งเศสจาก Alpine ผู้เคยคว้าชัยในรายการ Italian GP 2020", page:"ปีแอร์.html" },
-  { id:18, name:"Franco Colapinto", team:"Alpine", number:36, country:"Argentina", img:"ติ๋มมานี่มา.gif", bio:"Franco Colapinto นักขับชาวอาร์เจนตินาผู้มากพรสวรรค์จากทีม Alpine", page:"ติ๋ม.html" },
-  { id:19, name:"Isack Hadjar", team:"Racing Bulls", number:26, country:"France", img:"ฮัจจา.gif", bio:"Isack Hadjar นักแข่งดาวรุ่งจากฝรั่งเศส ผู้เป็นหนึ่งในอนาคตของทีม Racing Bulls", page:"ฮัจจา.html" },
-  { id:20, name:"Liam Lawson", team:"Racing Bulls", number:33, country:"New Zealand", img:"เลียม1.gif", bio:"Liam Lawson นักขับชาวนิวซีแลนด์ ผู้สร้างผลงานน่าประทับใจในการลงแข่งแทนในปี 2023", page:"เลียม.html" }
-];
-
-// RENDER DRIVER CARDS
-const driversGrid = document.getElementById('driversGrid');
-drivers.forEach((d,i)=>{
-  const card=document.createElement('div');
-  card.className='card';
-  card.innerHTML=`<div class="thumb"><img src="${d.img}" alt="${d.name}" style="height:100%;border-radius:12px;"></div>
-  <h4>${d.name}</h4>
-  <p>${d.team}</p>
-  <div class="meta"><span>เบอร์ ${d.number}</span><span>${d.country}</span></div>
-  <a class="link-small" href="${d.page}" target="_blank">อ่านต่อ</a>`;
-  driversGrid.appendChild(card);
-});
-
-// SCROLL
-function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
-</script>
-</body>
-</html>
+  {id:1,name:"Charles Leclerc",team:"Ferrari",number:16,country:"Monaco",img:"img/เจ้าชายชาร์ล.gif",bio:"Charles Leclerc นักแข่งชาวโมนาโก ปัจจุบันขับให้ทีม Scuderia Ferrari...",page:"หน้านักแข่ง+ประวัติข้อมูล.html"},
+  {id:2,name:"Lewis Hamilton",team:"Ferrari",number:44,country:"United Kingdom",img:"img/ลูอิส3.gif",bio:"Lewis Hamilton แชมป์โลก 7 สมัย ปัจจุบันย้ายจาก Mercedes มาร่วม Ferrari...",page:"ประวัติลูอิส.html"},
+  {id:3,name:"Max Verstappen",team:"Red Bull Racing",number:1,country:"Netherlands",img:"img/แม็กซ์.gif",bio:"แชมป์โลก 3 สมัยจากเนเธอร์แลนด์ ผู้ควบคุมสนามด้วยสไตล์การขับสุดดุดัน...",page:"ประวัติแม็กซ์.html"},
+  {id:4,name:"Lando Norris",team:"McLaren",number:4,country:"United Kingdom",img:"img/แลนโด้.gif",bio:"นักขับดาวรุ่งแห่งทีม McLaren...",page:"ประวัติแลนโด้.html"},
+  {id:5,name:"Oscar Piastri",team:"McLaren",number:81,country:"United Kingdom",img:"img/ออสก้า.gif",bio:"นักขับดาวรุ่งแห่งทีม McLaren...",page:"ประวัติออสก้า.html"},
+  {id:6,name:"Yuki Tsunoda",team:"Red Bull Racing",number:22,country:"Japan",img:"img/ยูกิ2.gif",bio:"นักขับที่ขับไว กล้าตัดสินใจ และมีความมุ่งมั่นสูง",page:"ประวัติยูกิ.html"},
+  {id:7,name:"George Russell",team:"Mercedes",number:63,country:"United Kingdom",img:"img/ยัยจอร์จ2.gif",bio:"George Russell นักขับอังกฤษแห่ง Mercedes โดดเด่นด้วยความแม่นยำและความมุ่งมั่น",page:"ประวัติจอร์จ.html"},
+  {id:8,name:"Kimi Antonelli",team:"Mercedes",number:80,country:"Italy",img:"img/คิมิ.gif",bio:"Kimi Antonelli ดาวรุ่งชาวอิตาเลียนที่ถูกจับตามองในฐานะอนาคตของ Mercedes",page:"ประวิติคิมิ.html"},
+  {id:9,name:"Carlos Sainz",team:"Williams",number:55,country:"Spain",img:"img/คาร์ลอส.gif",bio:"Carlos Sainz นักขับชาวสเปนที่มีสไตล์การขับเยือกเย็นและแม่นยำ ปัจจุบันอยู่กับทีม Williams",page:"ประวัติคาร์คอส.html"},
+  {id:10,name:"Alexander Albon",team:"Williams",number:23,country:"Thailand / United Kingdom",img:"img/หลานยายน้อย.gif",bio:"Alex Albon นักแข่งลูกครึ่งไทย–อังกฤษ ผู้สร้างแรงบันดาลใจให้แฟนชาวไทยทั่วประเทศ",page:"หลานยายน้อย.html"},
+  {id:11,name:"Fernando Alonso",team:"Aston Martin",number:14,country:"Spain",img:"img/อลอนโซ่
