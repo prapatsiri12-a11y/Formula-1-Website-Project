@@ -1,286 +1,189 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formula 1 Thailand</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Formula 1 Thailand</title>
 
-  <style>
-    @font-face {
-      font-family: 'Starbirl';
-      src: url('Starbirl.otf') format('truetype');
-      font-display: swap;
-    }
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-    * {margin:0; padding:0; box-sizing:border-box;}
+<style>
+/* ------------------- พื้นฐาน ------------------- */
+:root{
+  --red:#ff1744;
+  --dark:#0d0d0d;
+  --card:#1c1c1c;
+  --muted:#cfcfcf;
+  --accent:#ff5252;
+  --highlight:#ff1744;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
-      color: white;
-      overflow-x: hidden;
-      transition: background 0.8s ease;
-    }
+/* ------------------- หน้า Login ------------------- */
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #b71c1c, #f44336, #880e4f);
+  background-size: 600% 600%;
+  animation: gradientBG 15s ease infinite;
+}
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
 
-    header {
-      background: rgba(0,0,0,0.8);
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top:0;
-      z-index: 100;
-    }
+.login-form {
+  background: rgba(136,14,79,0.9);
+  padding: 50px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 320px;
+  animation: fadeIn 0.8s ease;
+}
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+.login-form h2 {
+  font-size: 36px;
+  text-align: center;
+  background: linear-gradient(90deg, #ff1744, #ffeb3b, #00e5ff, #7c4dff, #ff1744);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowText 8s linear infinite;
+}
+@keyframes glowText {
+  0% {background-position: 0%;}
+  100% {background-position: 400%;}
+}
+.login-form input {
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid #ff1744;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.login-form input::placeholder { color: #fff; }
+button {
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background: #ff1744;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+button:hover { background: #ff5252; }
+.error { color: #ffcdd2; text-align: center; font-size: 14px; }
 
-    header h1 {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: #ff1744;
-      text-shadow: 0 0 10px #ff1744, 0 0 20px #ff5252, 0 0 40px #ff1744;
-      animation: neonPulse 3s ease-in-out infinite;
-    }
+/* ------------------- หน้าเว็บหลัก ------------------- */
+body {
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
+  color:#fff;
+  line-height:1.6;
+}
+header {
+  backdrop-filter: blur(8px);
+  background: linear-gradient(90deg, rgba(255,23,68,0.14), rgba(0,0,0,0.6));
+  border-bottom: 1px solid rgba(255,23,68,0.2);
+  padding: 18px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #ff1744, #ff5252, #ff1744);
+  background-size: 200% 100%;
+  animation: gradientMove 3s linear infinite;
+}
+@keyframes gradientMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 200% 0; }
+}
 
-    @keyframes neonPulse {
-      0%, 100% {
-        text-shadow: 0 0 10px #ff1744, 0 0 20px #ff5252, 0 0 40px #ff1744, 0 0 80px #ff5252;
-      }
-      50% {
-        text-shadow: 0 0 20px #ff5252, 0 0 40px #ff1744, 0 0 80px #ff5252, 0 0 120px #ff1744;
-      }
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-    nav a:hover {
-      color: #ffeb3b;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      height: 100vh;
-      background: url('รถบรื้นๆ.gif') center/cover no-repeat;
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      color: white;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset:0;
-      background: rgba(0,0,0,0.5);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      max-width: 900px;
-      padding: 0 20px;
-    }
-    .hero h2 {
-      font-family: 'Starbirl', sans-serif;
-      font-size: 72px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      background: linear-gradient(90deg, #ff1744, #ffeb3b, #00e5ff, #7c4dff, #ff1744);
-      background-size: 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glowText 10s linear infinite;
-      text-shadow: 0 0 25px rgba(255,255,255,0.2);
-    }
-    @keyframes glowText {
-      0% {background-position: 0%;}
-      100% {background-position: 400%;}
-    }
-    .hero p {
-      font-size: 20px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      color: #fff;
-      text-shadow: 0 0 10px #000;
-    }
-
-    .btn {
-      padding: 14px 40px;
-      background: linear-gradient(135deg,#ff1744,#ff5252);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 18px;
-      font-weight: 700;
-      box-shadow: 0 10px 30px rgba(255,23,68,0.5);
-      transition: all 0.3s ease;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 40px rgba(255,23,68,0.7);
-    }
-
-    /* LOGIN PAGE */
-    .login-page {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(270deg, #b71c1c, #f44336, #880e4f);
-      background-size: 600% 600%;
-      animation: gradientBG 15s ease infinite;
-    }
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    .login-form {
-      background: rgba(136,14,79,0.9);
-      padding: 50px 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 320px;
-      animation: fadeIn 0.8s ease;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(30px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    .login-form h2 {
-      font-size: 36px;
-      text-align: center;
-      background: linear-gradient(90deg, #ff1744, #ffeb3b, #00e5ff, #7c4dff, #ff1744);
-      background-size: 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glowText 8s linear infinite;
-      text-shadow: 0 0 15px rgba(255,255,255,0.3);
-    }
-    .login-form input {
-      padding: 15px;
-      border-radius: 5px;
-      border: 2px solid #ff1744;
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      outline: none;
-      transition: 0.3s;
-    }
-    .login-form input::placeholder {
-      color: #fff;
-    }
-    .login-form input:focus {
-      border-color: #ff5252;
-      box-shadow: 0 0 10px rgba(255,82,82,0.5);
-    }
-    button {
-      padding: 15px;
-      border: none;
-      border-radius: 5px;
-      background: #ff1744;
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #ff5252;
-    }
-    .error {
-      color: #ffcdd2;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #111;
-      font-size: 14px;
-      color: #ccc;
-    }
-
-    @media(max-width:768px){
-      .hero h2 { font-size: 48px; }
-      .hero p { font-size: 16px; }
-      .btn { font-size: 16px; padding: 12px 30px; }
-    }
-  </style>
+.wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+nav a{
+  color:#cfcfcf;
+  margin-left:18px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+nav a:hover{color:var(--highlight);}
+.hero{
+  text-align:center;
+  padding:100px 20px;
+}
+.hero h1{
+  font-size:60px;
+  color:var(--highlight);
+  text-shadow:0 0 20px rgba(255,23,68,0.4);
+}
+.hero p{
+  color:#ccc;
+  margin-top:12px;
+  font-size:18px;
+}
+</style>
 </head>
-
 <body>
+
+<!-- หน้าเข้าสู่ระบบ -->
+<section class="login-page" id="loginPage">
+  <form class="login-form" onsubmit="return login(event)">
+    <h2>Formula 1</h2>
+    <input type="text" id="username" placeholder="username" required>
+    <input type="password" id="password" placeholder="password" required>
+    <button type="submit">Login</button>
+    <p class="error" id="errorMsg"></p>
+  </form>
+</section>
+
+<!-- หน้าเว็บหลัก -->
+<div id="mainSite" style="display:none;">
   <header>
-    <h1>Formula 1 Thailand</h1>
-    <nav>
-      <a onclick="showPage('login')">เข้าสู่ระบบ</a>
-      <a onclick="showPage('home')">หน้าหลัก</a>
-      <a href="หน้าหลัก2.html">ทีม & นักแข่ง</a>
-      <a href="https://www.formula1.com/">ข่าวสาร</a>
-      <a href="ติดต่อ.html">ติดต่อ</a>
-    </nav>
+    <div class="wrap">
+      <div style="font-weight:800;font-size:24px;color:#ff1744;">Formula 1 Thailand</div>
+      <nav>
+        <a href="#">หน้าหลัก</a>
+        <a href="#">ทีม & นักแข่ง</a>
+        <a href="#">กติกา</a>
+        <a href="#">ติดต่อ</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- หน้าเข้าสู่ระบบ -->
-  <section class="login-page" id="loginPage">
-    <form class="login-form" onsubmit="return login(event)">
-      <h2>Formula 1</h2>
-      <input type="text" id="username" placeholder="username" required>
-      <input type="password" id="password" placeholder="password" required>
-      <button type="submit">Login</button>
-      <p class="error" id="errorMsg"></p>
-    </form>
+  <section class="hero">
+    <h1>เปิดโลกแห่งความเร็ว — Formula 1</h1>
+    <p>รวบรวมข้อมูลทีม นักแข่ง สนาม และกติกาอย่างครบถ้วน</p>
   </section>
+</div>
 
-  <!-- หน้าหลัก -->
-  <section class="hero" id="homePage">
-    <div class="hero-content">
-      <h2>Formula 1</h2>
-      <p>เปิดโลกความเร็วเหนือขีดจำกัด รู้จักทีมแข่ง นักขับ และกติกาของการแข่งขันที่เร็วที่สุดในโลก</p>
-      <button class="btn" onclick="alert('🚗 พร้อมลุย!')">เริ่ม</button>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 Formula 1 | เว็บไซต์ให้ความรู้เกี่ยวกับกีฬาฟอร์มูลาวัน
-  </footer>
-
-  <script>
-    function showPage(page) {
-      document.getElementById("loginPage").style.display = (page === 'login') ? 'flex' : 'none';
-      document.getElementById("homePage").style.display = (page === 'home') ? 'flex' : 'none';
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    function login(event) {
-      event.preventDefault();
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      const error = document.getElementById("errorMsg");
-
-      if (user === "admin" && pass === "1234") {
-        alert("✅ เข้าสู่ระบบสำเร็จ!");
-        showPage('home');
-      } else {
-        error.textContent = "❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-      }
-    }
-
-    // แสดงหน้า Login เป็นค่าเริ่มต้น
-    showPage('login');
-  </script>
+<script>
+function login(event){
+  event.preventDefault();
+  const user=document.getElementById('username').value;
+  const pass=document.getElementById('password').value;
+  const error=document.getElementById('errorMsg');
+  if(user==="admin" && pass==="1234"){
+    document.getElementById('loginPage').style.display='none';
+    document.getElementById('mainSite').style.display='block';
+  } else {
+    error.textContent="❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+  }
+}
+</script>
 </body>
 </html>
