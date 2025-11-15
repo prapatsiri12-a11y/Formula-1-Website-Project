@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ประวัติ Lewis Hamilton | Formula 1</title>
+  <style>
+    @font-face {
+      font-family: 'evanescent';
+      src: url('evanescent.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #000000, #b71c1c);
+      color: white;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #b71c1c;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      font-size: 24px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffeb3b;
+    }
+
+    .container {
+      padding: 40px;
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+   
+    .driver-gif {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .driver-gif img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 10px;
+      border: 4px solid #ff1744;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    }
+
+   
+    .driver-info {
+      flex: 2 1 600px;
+    }
+
+    h2.section-title {
+      font-size: 32px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ff1744;
+      padding-bottom: 5px;
+    }
+
+    .hero-name {
+      font-family: 'evanescent', sans-serif;
+      font-size: 48px;
+      color: #ff1744;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+      margin-top: 0;
+    }
+
+    table.stats {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    table.stats th, table.stats td {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: left;
+    }
+
+    table.stats th {
+      background: #b71c1c;
+    }
+
+    .btn-home {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: #ff1744;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .btn-home:hover {
+      background: #ff5252;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #111;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    /* ✅ Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .driver-gif img {
+        max-width: 250px;
+      }
+
+      .hero-name {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Formula 1</h1>
+    <nav>
+      <a href="index.html">หน้าหลัก</a>
+      <a href="#">ประวัติ</a>
+      <a href="#">ทีมและนักแข่ง</a>
+      <a href="#">ข่าวสาร</a>
+      <a href="#">ติดต่อ</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    
+    <div class="ลูอิส1">
+      <img src="ลูอิส1.gif" alt="Lewis Hamilton">
+    </div>
+
+    
+    <div class="driver-info">
+      <h1 class="hero-name">Lewis Hamilton</h1>
+
+      <p><strong>ชื่อเต็ม:</strong> Lewis Carl Davidson Hamilton</p>
+      <p><strong>วันเกิด:</strong> 7 มกราคม 1985</p>
+      <p><strong>สถานที่เกิด:</strong> Stevenage, Hertfordshire, England</p>
+      <p><strong>ทีมปัจจุบัน:</strong> Mercedes-AMG Petronas Formula One Team</p>
+
+      <h2 class="section-title">สถิติที่สำคัญ</h2>
+      <table class="stats">
+        <tr><th>รายการ</th><th>ค่า</th></tr>
+        <tr><td>รายการกรังด์ปรีซ์ที่ลงแข่งขัน</td><td>ประมาณ 330+</td></tr>
+        <tr><td>ชนะ (Wins)</td><td>103</td></tr>
+        <tr><td>โพล (Pole Positions)</td><td>104</td></tr>
+        <tr><td>โพเดียม (Podiums)</td><td>197</td></tr>
+        <tr><td>แชมป์โลก (World Championships)</td><td>7 (ร่วมกับ Michael Schumacher)</td></tr>
+      </table>
+
+      <h2 class="section-title">เส้นทางสู่ F1</h2>
+      <p>Lewis Hamilton เริ่มต้นเส้นทางการแข่งขันตั้งแต่อายุ 8 ปีในกีฬาคาร์ท ก่อนเข้าสู่ระดับมืออาชีพอย่างรวดเร็ว  
+         เขาได้รับการสนับสนุนจาก McLaren ตั้งแต่อายุ 13 ปี และเปิดตัวใน Formula 1 ปี 2007 กับทีม McLaren โดยคว้าชัยชนะครั้งแรกในฤดูกาลนั้น  
+         ปี 2008 เขาคว้าแชมป์โลกคนแรกให้กับตัวเองในวัยเพียง 23 ปี</p>
+
+      <h2 class="section-title">ยุคทองกับ Mercedes</h2>
+      <p>Hamilton ย้ายมาร่วมทีม Mercedes ในปี 2013 และนับแต่นั้นกลายเป็นหนึ่งในนักขับที่ประสบความสำเร็จที่สุดในประวัติศาสตร์ Formula 1  
+         ระหว่างปี 2014-2021 เขาคว้าแชมป์โลกถึง 6 ครั้ง และสร้างสถิติการชนะและโพลมากที่สุดตลอดกาล</p>
+
+      <h2 class="section-title">สไตล์การขับและชีวิตนอกสนาม</h2>
+      <p>เขาเป็นที่รู้จักในฐานะนักขับที่ละเอียด รุกหนัก และควบคุมรถได้ยอดเยี่ยมในสภาพสนามเปียก  
+         นอกสนาม Hamilton ยังเป็นนักเคลื่อนไหวด้านสิ่งแวดล้อม แฟชั่น และสิทธิมนุษยชน  
+         เขาเป็นหนึ่งในบุคคลที่ทรงอิทธิพลที่สุดในวงการกีฬาโลกยุคใหม่</p>
+
+      <a href="หน้าหลักนักแข่ง.html" class="btn-home">← กลับไปหน้าทีมและนักแข่ง</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Formula 1 | เว็บไซต์ให้ความรู้เกี่ยวกับกีฬาฟอร์มูลาวัน
+  </footer>
+
+</body>
+</html>

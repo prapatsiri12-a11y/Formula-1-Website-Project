@@ -1,0 +1,268 @@
+<header>
+  <div class="logo">F1 Thailand</div>
+  <nav>
+    <a href="home.html">นักแข่ง</a>
+    <a href="tracks.html">สนามแข่ง 2025</a>
+    <a href="rules.html">กติกา</a>
+    <a href="contact.html">ติดต่อ</a>
+  </nav>
+</header>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F1 — นักแข่ง</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">F1 Thailand</div>
+  <nav>
+    <a href="home.html">นักแข่ง</a>
+    <a href="tracks.html">สนามแข่ง 2025</a>
+    <a href="rules.html">กติกา</a>
+  </nav>
+</header>
+
+<main>
+  <h2>นักแข่ง Formula 1 ปี 2025</h2>
+  <div class="drivers-grid" id="driversGrid">
+    <!-- นักแข่ง 20 คน จะ generate ด้วย JS -->
+  </div>
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F1 — สนามแข่ง 2025</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">F1 Thailand</div>
+  <nav>
+    <a href="home.html">นักแข่ง</a>
+    <a href="tracks.html">สนามแข่ง 2025</a>
+    <a href="rules.html">กติกา</a>
+  </nav>
+</header>
+
+<main>
+  <h2>สนามแข่ง Formula 1 ปี 2025</h2>
+  <div class="tracks-grid">
+    <div class="track-card">สนามบาห์เรน</div>
+    <div class="track-card">สนามซาอุดีอาระเบีย</div>
+    <div class="track-card">สนามออสเตรเลีย</div>
+    <div class="track-card">สนามอาเซอร์ไบจาน</div>
+    <div class="track-card">สนามโมนาโก</div>
+    <div class="track-card">สนามสเปน</div>
+    <div class="track-card">สนามแคนาดา</div>
+    <div class="track-card">สนามออสเตรีย</div>
+    <div class="track-card">สนามฝรั่งเศส</div>
+    <div class="track-card">สนามอังกฤษ</div>
+    <div class="track-card">สนามฮังการี</div>
+    <div class="track-card">สนามเบลเยียม</div>
+    <div class="track-card">สนามเนเธอร์แลนด์</div>
+    <div class="track-card">สนามอิตาลี</div>
+    <div class="track-card">สนามสิงคโปร์</div>
+    <div class="track-card">สนามญี่ปุ่น</div>
+    <div class="track-card">สนามสหรัฐอเมริกา</div>
+    <div class="track-card">สนามเม็กซิโก</div>
+    <div class="track-card">สนามบราซิล</div>
+    <div class="track-card">สนามอาบูดาบี</div>
+  </div>
+</main>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ติดต่อ | Formula 1 Thailand</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<header>
+  <h1>Formula 1 Thailand</h1>
+  <nav>
+    <a href="home.html">หน้าหลัก</a>
+    <a href="login.html">เข้าสู่ระบบ</a>
+    <a href="drivers.html">ทีม & นักแข่ง</a>
+    <a href="https://www.formula1.com/">ข่าวสาร</a>
+    <a href="contact.html">ติดต่อ</a>
+  </nav>
+</header>
+
+<section class="contact">
+  <h2>ติดต่อเรา</h2>
+  <p>เชื่อมต่อกับเราผ่านโซเชียลมีเดียเพื่อรับข่าวสารและอัปเดตล่าสุด!</p>
+  <div class="social-links">
+    <a href="https://www.instagram.com/llumi.z" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/prapatsiri.2025" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://line.me/ti/p/Z6y4N9xx8r" target="_blank" class="line"><i class="fab fa-line"></i></a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Formula 1 | เว็บไซต์ให้ความรู้เกี่ยวกับกีฬาฟอร์มูลาวัน
+</footer>
+</body>
+</html>
+
+const drivers = [
+  { name:'Max Verstappen', team:'Red Bull', country:'Netherlands', img:'img/drivers/แม็ก.gif', bioPage:'ประวัติแม็ก.html' },
+  { name:'Lewis Hamilton', team:'Ferrari', country:'UK', img:'img/drivers/ลูอิส.gif', bioPage:'ประวัติลูอิส.html' },
+  { name:'Charles Leclerc', team:'Ferrari', country:'Monaco', img:'img/drivers/เจ้าชายชาร์ล.gif', bioPage:'ประวัติชาร์ลส.html' },
+  { name:'Lando Norris', team:'McLaren', country:'UK', img:'img/drivers/แลนโด้.gif', bioPage:'ประวัติแลนโด้.html' },
+  { name:'Oscar Piastri', team:'McLaren', country:'Australia', img:'img/drivers/ออสก้า.gif', bioPage:'ประวัติโอสการ์.html' },
+  { name:'George Russell', team:'Mercedes', country:'UK', img:'img/drivers/ยัยจอร์จ2.gif', bioPage:'ประวัติจอร์จ.html' },
+  { name:'Kimi Antonelli', team:'Mercedes', country:'Italy', img:'img/drivers/คิมิ.gif', bioPage:'ประวัติคิมิ.html' },
+  { name:'Alexander Albon', team:'Williams', country:'Thailand/UK', img:'img/drivers/หลานยายน้อย.gif', bioPage:'หลานยายน้อย.html' },
+  { name:'Carlos Sainz', team:'Williams', country:'Spain', img:'img/drivers/คาร์ลอส.gif', bioPage:'ประวัติคาร์คอส.html' },
+  { name:'Liam Lawson', team:'Racing Bulls', country:'New Zealand', img:'img/drivers/เลียม.gif', bioPage:'เลียม.html' },
+  { name:'Isack Hadjar', team:'Racing Bulls', country:'France', img:'img/drivers/ฮัจจา.gif', bioPage:'ฮัจจา.html' },
+  { name:'Lance Stroll', team:'Aston Martin', country:'Canada', img:'img/drivers/พ่อรวย2.gif', bioPage:'พ่อรวย.html' },
+  { name:'Fernando Alonso', team:'Aston Martin', country:'Spain', img:'img/drivers/อลอนโซ่.gif', bioPage:'อลอนโซ่.html' },
+  { name:'Esteban Ocon', team:'Haas', country:'France', img:'img/drivers/โอคอน.gif', bioPage:'โอคอน.html' },
+  { name:'Oliver Bearman', team:'Haas', country:'UK', img:'img/drivers/น้องหมี.gif', bioPage:'น้องหมี.html' },
+  { name:'Nico Hulkenberg', team:'Kick Sauber', country:'Germany', img:'img/drivers/นิโค.gif', bioPage:'นิโค.html' },
+  { name:'Gabriel Bortoleto', team:'Kick Sauber', country:'Brazil', img:'img/drivers/กาเบียล.gif', bioPage:'กาเบียล.html' },
+  { name:'Pierre Gasly', team:'Alpine', country:'France', img:'img/drivers/ปีแอร์.gif', bioPage:'ปีแอร์.html' },
+  { name:'Franco Colapinto', team:'Alpine', country:'Argentina', img:'img/drivers/ติ๋มมานี่มา.gif', bioPage:'ติ๋มhtml' },
+  { name:'Yuki Tsunoda', team:'Red Bull Racing', country:'Japan', img:'img/drivers/ยูกิ.gif', bioPage:'ประวัติยูกิ.html' }
+];
+
+const driversGrid = document.getElementById('driversGrid');
+if (driversGrid) {
+  drivers.forEach(driver => {
+    const cardLink = document.createElement('a');
+    cardLink.href = driver.bioPage;
+    cardLink.classList.add('driver-link');
+
+    const card = document.createElement('div');
+    card.classList.add('driver-card');
+    card.innerHTML = `
+      <img src="${driver.img}" alt="${driver.name}">
+      <h3>${driver.name}</h3>
+      <p>${driver.team}</p>
+      <p>${driver.country}</p>
+    `;
+
+    cardLink.appendChild(card);
+    driversGrid.appendChild(cardLink);
+  });
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,#0b0b0b,#1a1a1a);
+  color: white;
+}
+
+/* Header */
+header {
+  background: rgba(0,0,0,0.8);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ff1744;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover { color: #ffeb3b; }
+
+/* Contact Section */
+.contact {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.contact h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #ff1744;
+  text-shadow: 0 0 20px #ff1744;
+}
+
+.contact p {
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #ccc;
+}
+
+.social-links {
+  display: flex;
+  gap: 40px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  color: white;
+  font-size: 32px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(255,23,68,0.4);
+}
+
+.social-links a.instagram { background: #E1306C; }
+.social-links a.facebook { background: #1877F2; }
+.social-links a.line { background: #00C300; }
+
+.social-links a:hover {
+  transform: scale(1.15);
+  box-shadow: 0 15px 35px rgba(255,23,68,0.6);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* Responsive */
+@media(max-width:600px){
+  .social-links { gap: 20px; }
+  .social-links a { width: 60px; height: 60px; font-size: 26px; }
+  .contact h2 { font-size: 36px; }
+  .contact p { font-size: 16px; }
+}
